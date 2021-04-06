@@ -1,11 +1,17 @@
+import { useCanvas } from './hooks/useCanvas'
+
 function Canvas() {
-    return(
-      <div className="App">
-        <canvas
-          style={{ width: '800px', height: '450px' }}
-        />
-      </div>
-    )
+
+  const [ canvasRef, canvasWidth, canvasHeight ] = useCanvas()
+
+  return(
+    <div className="App">
+      <canvas
+        ref = {canvasRef}
+        style = {{ width: `${canvasWidth}px`, height: `${canvasHeight}px` }}
+      />
+    </div>
+  )
 }
 
 export default Canvas
