@@ -23,11 +23,19 @@ export function useCanvas() {
   }, [ufoXCenter])
 
   function animate () {
+    moveHorizontally()
+    updateTimer()
+  }
+
+  function moveHorizontally() {
     if (timer >= 600 && timer < 1200) {
       setUfoXCenter(ufoXCenter - 1)
     } else {
       setUfoXCenter(ufoXCenter + 1)
     }
+  }
+
+  function updateTimer() {
     if (timer === 1200) {
       setTimer(0)
     } else {
