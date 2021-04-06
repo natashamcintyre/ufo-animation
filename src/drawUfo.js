@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function drawUfo(props) {
   const { context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight } = props
   const ufoLength = canvasWidth / 8
