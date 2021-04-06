@@ -1,5 +1,4 @@
 export default function drawGround(context) {
-  console.log(`drawing the ground....`)
   context.beginPath()
   context.moveTo(0, 330)
   context.lineTo(200, 340)
