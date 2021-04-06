@@ -22,7 +22,13 @@ export function useCanvas() {
     context.clearRect(0, 0, canvasWidth, canvasHeight)
     drawGround(context)
     drawUfo({ context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight })
-  })
+  }, [ufoXCenter])
+
+  function animate () {
+    setUfoXCenter(ufoXCenter + 1)
+  }
+
+  setTimeout(animate, 10)
 
   return [ canvasRef, canvasWidth, canvasHeight ]
 }
