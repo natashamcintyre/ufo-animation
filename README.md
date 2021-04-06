@@ -1,5 +1,7 @@
 # UFO Animation
 
+Click [here](https://ufo-nm-ation.herokuapp.com/) to see the UFO land!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Wiki
