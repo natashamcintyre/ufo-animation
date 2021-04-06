@@ -6,7 +6,7 @@ import drawUfo from '../drawUfo'
 const canvasWidth = 800
 const canvasHeight = 450
 
-export function useCanvas() {
+export function useCanvas(play) {
   const canvasRef = useRef(null)
   const [ufoXCenter, setUfoXCenter] = useState(100)
   const [ufoYCenter, setUfoYCenter] = useState(100)
@@ -54,7 +54,9 @@ export function useCanvas() {
     }
   }
 
-  setTimeout(animate, 5)
+  if (play === true) {
+    setTimeout(animate, 5)
+  }
 
   return [ canvasRef, canvasWidth, canvasHeight ]
 }

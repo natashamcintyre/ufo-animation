@@ -1,8 +1,13 @@
-import React, { useCanvas } from './hooks/useCanvas'
+import React, { useState } from 'react'
+import { useCanvas } from './hooks/useCanvas'
 
 function Canvas() {
+  const [play, setPlay] = useState(false)
+  const [ canvasRef, canvasWidth, canvasHeight ] = useCanvas(play)
 
-  const [ canvasRef, canvasWidth, canvasHeight ] = useCanvas()
+  const togglePauseAnimation = () => {
+    setPlay(!play)
+  }
 
   return(
     <div className="App">
@@ -10,6 +15,7 @@ function Canvas() {
         ref = {canvasRef}
         style = {{ width: `${canvasWidth}px`, height: `${canvasHeight}px` }}
       />
+      <button id='pause-button' onClick={togglePauseAnimation}>{play === true ? `Pause` : `Play`}</button>
     </div>
   )
 }
