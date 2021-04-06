@@ -1,4 +1,4 @@
-import { useCanvas } from './hooks/useCanvas'
+import React, { useCanvas } from './hooks/useCanvas'
 
 function Canvas() {
 
