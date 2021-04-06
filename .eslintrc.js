@@ -18,8 +18,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "only-warn"
+        "react"
     ],
     "rules": {
     },
