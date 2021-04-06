@@ -10,14 +10,12 @@ export function useCanvas() {
   const canvasRef = useRef(null)
   const [ufoXCenter, setUfoXCenter] = useState(100)
   const [ufoYCenter, setUfoYCenter] = useState(100)
+  const [timer, setTimer] = useState(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
     scale(canvas, context)
-
-    const ufoLength = canvasWidth / 8
-    const ufoWidth = canvasHeight / 15
 
     context.clearRect(0, 0, canvasWidth, canvasHeight)
     drawGround(context)
@@ -25,10 +23,19 @@ export function useCanvas() {
   }, [ufoXCenter])
 
   function animate () {
-    setUfoXCenter(ufoXCenter + 1)
+    if (timer >= 600 && timer < 1200) {
+      setUfoXCenter(ufoXCenter - 1)
+    } else {
+      setUfoXCenter(ufoXCenter + 1)
+    }
+    if (timer === 1200) {
+      setTimer(0)
+    } else {
+      setTimer(timer + 1)
+    }
   }
 
-  setTimeout(animate, 10)
+  setTimeout(animate, 5)
 
   return [ canvasRef, canvasWidth, canvasHeight ]
 }
