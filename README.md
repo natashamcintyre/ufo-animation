@@ -22,7 +22,7 @@ npm test
 
 For coverage, run
 ```
-npm test -- --coverage
+npm test -- --coverage --watchAll
 ```
 
 ## Linting
@@ -37,8 +37,10 @@ In progress
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Next steps
-* Add continuous integration
+* Add CICD
+* Clouds moving in background
 * Ufo lands on ground
+* Landing legs come out on landing
 * Light rays shining down from ufo
 * Replay button
 * Ufo changes size to create forwards and backwards flying effect
