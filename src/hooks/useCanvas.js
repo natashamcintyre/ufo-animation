@@ -65,9 +65,15 @@ export function useCanvas(play) {
     // }
   }
 
+  function resetAnimation() {
+    setUfoXCenter(100)
+    setUfoYCenter(100)
+    setTimer(0)
+  }
+
   if (play === true) {
     setTimeout(animate, 5)
   }
 
-  return [ canvasRef, canvasWidth, canvasHeight ]
+  return [ canvasRef, canvasWidth, canvasHeight, resetAnimation ]
 }
