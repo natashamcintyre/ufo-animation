@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import scale from '../scale'
 import drawGround from '../drawGround'
+import drawClouds from '../drawClouds'
 import drawUfo from '../drawUfo'
 
 const canvasWidth = 800
@@ -11,6 +12,7 @@ export function useCanvas(play) {
   const [ufoXCenter, setUfoXCenter] = useState(100)
   const [ufoYCenter, setUfoYCenter] = useState(100)
   const [timer, setTimer] = useState(0)
+  const [cloudOrigin, setCloudOrigin] = useState(3)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -19,19 +21,25 @@ export function useCanvas(play) {
 
     context.clearRect(0, 0, canvasWidth, canvasHeight)
     drawGround(context)
+    drawClouds({ context, cloudOrigin })
     drawUfo({ context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight })
-  }, [ufoXCenter, ufoYCenter])
+  }, [ufoXCenter, ufoYCenter, cloudOrigin])
 
   function animate () {
+    animateClouds()
     moveHorizontally()
     moveVertically()
     updateTimer()
   }
 
+  function animateClouds() {
+    setCloudOrigin((cloudOrigin + 1199) % 1200)
+  }
+
   function moveHorizontally() {
-    if (timer >= 600 && timer < 1200 || timer >= 1800 && timer < 2400) {
+    if (timer >= 600 && timer < 1200 || timer >= 1800 && timer < 2000) {
       setUfoXCenter(ufoXCenter - 1)
-    } else {
+    } else if (timer < 1800) {
       setUfoXCenter(ufoXCenter + 1)
     }
   }
@@ -43,15 +51,18 @@ export function useCanvas(play) {
       setUfoYCenter(Math.pow(ufoXCenter - 300, 2) / - 1500 + 184)
     } else if (timer < 1800) {
       setUfoYCenter(Math.pow(ufoXCenter - 600, 2) / - 2000 + 282)
+    } else if (timer < 2000) {
+      setUfoYCenter(- Math.pow(Math.E, ufoXCenter / 160) + 356.5)
     }
   }
 
   function updateTimer() {
-    if (timer === 2400) {
-      setTimer(0)
-    } else {
-      setTimer(timer + 1)
-    }
+    setTimer(timer + 1)
+    // if (timer === 2400) {
+    //   setTimer(0)
+    // } else {
+    //   setTimer(timer + 1)
+    // }
   }
 
   if (play === true) {
