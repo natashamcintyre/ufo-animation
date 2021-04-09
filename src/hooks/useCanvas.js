@@ -14,6 +14,7 @@ export function useCanvas(play) {
   const [ufoYCenter, setUfoYCenter] = useState(100)
   const [timer, setTimer] = useState(0)
   const [cloudOrigin, setCloudOrigin] = useState(3)
+  const [treeScale, setTreeScale] = useState(30)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -23,11 +24,12 @@ export function useCanvas(play) {
     context.clearRect(0, 0, canvasWidth, canvasHeight)
     drawGround(context)
     drawClouds({ context, cloudOrigin })
-    drawTrees({ context })
+    drawTrees({ context, treeScale })
     drawUfo({ context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight })
-  }, [ufoXCenter, ufoYCenter, cloudOrigin])
+  }, [ufoXCenter, ufoYCenter, cloudOrigin, treeScale])
 
   function animate () {
+    animateTrees()
     animateClouds()
     moveHorizontally()
     moveVertically()
@@ -36,6 +38,12 @@ export function useCanvas(play) {
 
   function animateClouds() {
     setCloudOrigin((cloudOrigin + 1199) % 1200)
+  }
+
+  function animateTrees() {
+    if (timer < 2000) {
+      setTreeScale((treeScale + 99.5) % 100)
+    }
   }
 
   function moveHorizontally() {
@@ -60,11 +68,6 @@ export function useCanvas(play) {
 
   function updateTimer() {
     setTimer(timer + 1)
-    // if (timer === 2400) {
-    //   setTimer(0)
-    // } else {
-    //   setTimer(timer + 1)
-    // }
   }
 
   function resetAnimation() {
