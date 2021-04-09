@@ -11,7 +11,7 @@ export default function drawClouds(props) {
     context.lineTo(x, y + 24 * scale);
     context.strokeStyle = '#797874';
     context.stroke();
-    context.fillStyle = '#8ED6FF';
+    context.fillStyle = '#FEFFF3';
     context.fill()
   }
 

@@ -37,13 +37,12 @@ In progress
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Next steps
-* Add CICD
-* Clouds moving in background
-* Ufo lands on ground
+* Trees going backwards
 * Landing legs come out on landing
 * Light rays shining down from ufo
 * Replay button
 * Ufo changes size to create forwards and backwards flying effect
+* Ufo leans forwards (ellipse gets smaller, top does something else, bigger?)
 * Aliens get out??
 
 # Wiki
