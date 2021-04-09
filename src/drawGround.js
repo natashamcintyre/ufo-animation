@@ -8,8 +8,8 @@ export default function drawGround(context) {
   context.lineTo(800, 340)
   context.lineTo(800, 450)
   context.lineTo(0, 450)
-  context.strokeStyle = 'darkgreen'
+  context.strokeStyle = 'green'
   context.stroke()
-  context.fillStyle = 'darkgreen'
+  context.fillStyle = 'limegreen'
   context.fill()
 }

@@ -3,6 +3,7 @@ import scale from '../scale'
 import drawGround from '../drawGround'
 import drawClouds from '../drawClouds'
 import drawUfo from '../drawUfo'
+import drawTrees from  '../drawTrees'
 
 const canvasWidth = 800
 const canvasHeight = 450
@@ -22,6 +23,7 @@ export function useCanvas(play) {
     context.clearRect(0, 0, canvasWidth, canvasHeight)
     drawGround(context)
     drawClouds({ context, cloudOrigin })
+    drawTrees({ context })
     drawUfo({ context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight })
   }, [ufoXCenter, ufoYCenter, cloudOrigin])
 

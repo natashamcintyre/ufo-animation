@@ -39,7 +39,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Next steps
 * Trees going backwards
 * Landing legs come out on landing
-* Light rays shining down from ufo
 * Replay button
 * Ufo changes size to create forwards and backwards flying effect
 * Ufo leans forwards (ellipse gets smaller, top does something else, bigger?)
