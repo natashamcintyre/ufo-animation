@@ -41,7 +41,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Landing legs come out on landing
 * Replay button
 * Ufo changes size to create forwards and backwards flying effect
-* Ufo leans forwards (ellipse gets smaller, top does something else, bigger?)
 * Aliens get out??
 
 # Learning and reflection
