@@ -37,7 +37,7 @@ In progress
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Next steps
-* Trees going backwards
+
 * Landing legs come out on landing
 * Replay button
 * Ufo changes size to create forwards and backwards flying effect

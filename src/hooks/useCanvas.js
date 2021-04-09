@@ -15,6 +15,7 @@ export function useCanvas(play) {
   const [timer, setTimer] = useState(0)
   const [cloudOrigin, setCloudOrigin] = useState(3)
   const [treeScale, setTreeScale] = useState(30)
+  const [tilt, setTilt] = useState(1)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -25,14 +26,13 @@ export function useCanvas(play) {
     drawGround(context)
     drawClouds({ context, cloudOrigin })
     drawTrees({ context, treeScale })
-    drawUfo({ context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight })
-  }, [ufoXCenter, ufoYCenter, cloudOrigin, treeScale])
+    drawUfo({ context, ufoXCenter, ufoYCenter, tilt, canvasWidth, canvasHeight })
+  }, [ufoXCenter, ufoYCenter, cloudOrigin, treeScale, tilt])
 
   function animate () {
     animateTrees()
     animateClouds()
-    moveHorizontally()
-    moveVertically()
+    animateUfo()
     updateTimer()
   }
 
@@ -43,6 +43,20 @@ export function useCanvas(play) {
   function animateTrees() {
     if (timer < 2000) {
       setTreeScale((treeScale + 99.5) % 100)
+    }
+  }
+
+  function animateUfo() {
+    moveHorizontally()
+    moveVertically()
+    tiltUfo()
+  }
+
+  function tiltUfo() {
+    if (timer >= 600 && timer < 1200 || timer >= 1800 && timer < 2000) {
+      setTilt(tilt + 0.001)
+    } else if (timer < 1800) {
+      setTilt(tilt - 0.001)
     }
   }
 

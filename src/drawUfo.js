@@ -1,5 +1,5 @@
 export default function drawUfo(props) {
-  const { context, ufoXCenter, ufoYCenter, canvasWidth, canvasHeight } = props
+  const { context, ufoXCenter, ufoYCenter, tilt, canvasWidth, canvasHeight } = props
   const ufoLength = canvasWidth / 8
   const ufoWidth = canvasHeight / 15
 
@@ -18,14 +18,14 @@ export default function drawUfo(props) {
     ufoColour.addColorStop(1, 'silver')
 
     context.beginPath();
-    context.ellipse(ufoXCenter, ufoYCenter, ufoWidth, ufoLength, Math.PI * 9 / 20, 0, 2 * Math.PI)
+    context.ellipse(ufoXCenter, ufoYCenter, ufoWidth * tilt, ufoLength, Math.PI * 9 / 20, 0, 2 * Math.PI)
     context.fillStyle = ufoColour
     context.fill()
     context.strokeStyle = 'gray'
     context.stroke()
 
     context.beginPath()
-    context.ellipse(ufoXCenter, ufoYCenter, ufoWidth / 5, ufoLength / 5, Math.PI * 9 / 20, 0, 2 * Math.PI)
+    context.ellipse(ufoXCenter, ufoYCenter, ufoWidth * tilt / 5, ufoLength / 5, Math.PI * 9 / 20, 0, 2 * Math.PI)
     context.fillStyle = '#505050'
     context.fill()
   }
