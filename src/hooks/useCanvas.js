@@ -11,11 +11,12 @@ const canvasHeight = 450
 export function useCanvas(play) {
   const canvasRef = useRef(null)
   const [ufoXCenter, setUfoXCenter] = useState(100)
-  const [ufoYCenter, setUfoYCenter] = useState(100)
+  const [ufoYCenter, setUfoYCenter] = useState(11)
   const [timer, setTimer] = useState(0)
   const [cloudOrigin, setCloudOrigin] = useState(3)
   const [treeScale, setTreeScale] = useState(30)
   const [tilt, setTilt] = useState(1)
+  const [levelNumerator, setlevelNumerator] = useState(19)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -26,8 +27,8 @@ export function useCanvas(play) {
     drawGround(context)
     drawClouds({ context, cloudOrigin })
     drawTrees({ context, treeScale })
-    drawUfo({ context, ufoXCenter, ufoYCenter, tilt, canvasWidth, canvasHeight })
-  }, [ufoXCenter, ufoYCenter, cloudOrigin, treeScale, tilt])
+    drawUfo({ context, ufoXCenter, ufoYCenter, tilt, levelNumerator, canvasWidth, canvasHeight })
+  }, [ufoXCenter, ufoYCenter, cloudOrigin, treeScale, tilt, levelNumerator])
 
   function animate () {
     animateTrees()
@@ -50,13 +51,20 @@ export function useCanvas(play) {
     moveHorizontally()
     moveVertically()
     tiltUfo()
+    levelUfo()
   }
 
   function tiltUfo() {
-    if (timer >= 600 && timer < 1200 || timer >= 1800 && timer < 2000) {
+    if (timer >= 600 && timer < 1200) {
       setTilt(tilt + 0.001)
-    } else if (timer < 1800) {
+    } else if (timer < 2000) {
       setTilt(tilt - 0.001)
+    }
+  }
+
+  function levelUfo() {
+    if (timer >= 1800 && timer < 2000) {
+      setlevelNumerator(levelNumerator + 0.003)
     }
   }
 
@@ -86,7 +94,8 @@ export function useCanvas(play) {
 
   function resetAnimation() {
     setUfoXCenter(100)
-    setUfoYCenter(100)
+    setUfoYCenter(11)
+    setTilt(1)
     setTimer(0)
   }
 
