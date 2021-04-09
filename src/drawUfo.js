@@ -44,17 +44,21 @@ export default function drawUfo(props) {
     context.ellipse(ufoXCenter + XShift, ufoYCenter + YShift, ufoWidth / 6, ufoLength / 10, Math.PI * 9 / 20, 0, 2 * Math.PI)
     context.fillStyle = 'yellow'
     context.fill()
+    addLightBeams(XShift, YShift)
 
-    var lightShade = context.createLinearGradient(0, ufoYCenter + YShift, 0, ufoYCenter + YShift + 80)
-    lightShade.addColorStop(0, '#FFFF66')
-    lightShade.addColorStop(1, 'rgba(255, 255, 255, 0)')
+  }
+
+  const addLightBeams = (XShift, YShift) => {
+    var lightBeamGradient = context.createLinearGradient(0, ufoYCenter + YShift, 0, ufoYCenter + YShift + 80)
+    lightBeamGradient.addColorStop(0, '#FFFF66')
+    lightBeamGradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
     context.beginPath()
     context.moveTo(ufoXCenter + XShift - ufoWidth / 12, ufoYCenter + YShift)
     context.lineTo(ufoXCenter + XShift - ufoWidth / 6 - 7, ufoYCenter + YShift + 110)
     context.lineTo(ufoXCenter + XShift + ufoWidth / 6 + 7, ufoYCenter + YShift + 110)
     context.lineTo(ufoXCenter + XShift + ufoWidth / 12, ufoYCenter + YShift)
     context.closePath()
-    context.fillStyle = lightShade
+    context.fillStyle = lightBeamGradient
     context.fill()
   }
 
