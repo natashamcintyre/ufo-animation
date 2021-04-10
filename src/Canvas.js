@@ -24,16 +24,16 @@ function Canvas() {
   }
 
   return(
-    <div className="App">
+    <div className="canvas-and-buttons">
+      <div id="buttons">
+        <button id='pause-button' onClick={togglePauseAnimation}>{play === true ? `Pause` : `Play`}</button>
+        <button id='restart-button' onClick={resetUfo} style={{ visibility: updateButtonVisibility() }}>Reset</button>
+      </div>
       <div className='canvas'>
         <canvas
           ref = {canvasRef}
           style = {{ width: `${canvasWidth}px`, height: `${canvasHeight}px` }}
         />
-      </div>
-      <div id="buttons">
-        <button id='pause-button' onClick={togglePauseAnimation}>{play === true ? `Pause` : `Play`}</button>
-        <button id='restart-button' onClick={resetUfo} style={{ visibility: updateButtonVisibility() }}>Reset</button>
       </div>
     </div>
   )

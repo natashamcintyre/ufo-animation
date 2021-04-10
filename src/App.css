@@ -1,4 +1,8 @@
-.App {
+body {
+  background: linen;
+}
+
+.canvas-and-buttons, .intro {
   text-align: center;
 }
 
@@ -6,6 +10,17 @@ canvas {
   background: #8ED6FF;
 }
 
-#buttons {
-  display: flex;
+button {
+  background: #8ED6FF;
+  color: black;
+  width: 100px;
+  height: 30px;
+  font-size: medium;
+  outline: none;
+  margin: 20px;
+  margin-top: 0px;
+}
+
+button:hover {
+  cursor: pointer
 }

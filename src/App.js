@@ -4,7 +4,13 @@ import './App.css'
 
 function App() {
   return (
-    <Canvas />
+    <div className="ufo-app">
+      <div className="intro">
+        <h1>UFO Animation</h1>
+        <p>{ 'Click on Play to start the animation' }</p>
+      </div>
+      <Canvas />
+    </div>
   )
 }
 
