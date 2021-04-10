@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCanvas } from './hooks/useCanvas'
 
 function Canvas() {
+  const [reset, setReset] = useState(0)
   const [play, setPlay] = useState(false)
   const [ canvasRef, canvasWidth, canvasHeight, resetAnimation ] = useCanvas(play)
 
@@ -9,9 +10,17 @@ function Canvas() {
     setPlay(!play)
   }
 
-  function restartAnimation() {
+  function resetUfo() {
+    // setPlay(false)
     resetAnimation()
-    setPlay(false)
+  }
+
+  const updateButtonVisibility = () => {
+    if (play === true) {
+      return 'hidden'
+    } else {
+      return 'visible'
+    }
   }
 
   return(
@@ -24,7 +33,7 @@ function Canvas() {
       </div>
       <div id="buttons">
         <button id='pause-button' onClick={togglePauseAnimation}>{play === true ? `Pause` : `Play`}</button>
-        <button id='restart-button' onClick={restartAnimation}>Replay</button>
+        <button id='restart-button' onClick={resetUfo} style={{ visibility: updateButtonVisibility() }}>Reset</button>
       </div>
     </div>
   )

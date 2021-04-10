@@ -5,3 +5,7 @@
 canvas {
   background: #8ED6FF;
 }
+
+#buttons {
+  display: flex;
+}

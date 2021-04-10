@@ -97,6 +97,9 @@ export function useCanvas(play) {
     setUfoYCenter(11)
     setTilt(1)
     setTimer(0)
+    setCloudOrigin(3)
+    setTreeScale(30)
+    setlevelNumerator(19)
   }
 
   if (play === true) {
