@@ -39,7 +39,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Next steps
 
 * Landing legs come out on landing
-* Replay button
 * Ufo changes size to create forwards and backwards flying effect
 * Aliens get out??
 
